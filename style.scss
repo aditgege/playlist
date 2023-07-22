@@ -1,0 +1,417 @@
+$primary-color: #1BB17D;
+$neutral-white: #FFFFFF;
+$neutral-gray: #777986;
+$neutral-black: #2E2E2E;
+$base-background: #272723;
+$slider-size: 24px;
+$slider-thumb-size: 14px;
+$bg-gradient: linear-gradient(180.07deg, #1BB17D 0.06%, #283890 158.35%);
+$scrollbar-thumb-bg: #d9d9d9;
+$scrollbar-track-bg: transparent;
+
+// modal variables
+$modal-bg-color: rgba(0, 0, 0, 0.7);
+$modal-content-bg-color: #fff;
+$modal-content-padding: 20px;
+$modal-content-max-width: 400px;
+
+
+@font-face {
+  font-family: 'Forgotten Futurist';
+  src: url('./fonts/forgotten_futurist_rg.otf') format('opentype');
+}
+
+:root {
+  font-family: 'Forgotten Futurist', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: $base-background;
+}
+
+.container {
+  max-width: 1780px;
+  margin: 0 auto;
+  padding: 2rem 4rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card {
+  background-color: $neutral-black;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+  position: relative;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  margin-bottom: 8px;
+}
+
+.input-date {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  color: $neutral-white;
+  text-decoration: none;
+  border: none;
+  background: $neutral-black;
+  gap: 8px;
+  text-wrap: nowrap;
+  border: 2px solid $primary-color;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.25);
+
+  button {
+    background: none;
+    border: none;
+    color: $neutral-white;
+    cursor: pointer;
+  }
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+input[type="date"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.date-picker-wrapper {
+  position: relative;
+}
+
+.date-picker-wrapper button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-gradient {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  color: $neutral-white;
+  text-decoration: none;
+  border: none;
+  background: $neutral-black;
+  gap: 8px;
+  text-wrap: nowrap;
+  border: 2px solid $primary-color;
+  border-radius: 4px;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &-switch {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  &-button  {
+    display: flex;
+    align-items: center;
+    gap: 12px
+  }
+  
+}
+
+.scrollable-table {
+  height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+
+  // Scrollbar styles
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    @media (min-width: 768px) {
+      width: 8px;
+      height: 8px;
+    }
+    background-image: $base-background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: $neutral-white;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $base-background;
+    border-radius: 8px;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 25px;
+    text-align: left;
+  }
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1; 
+
+    tr {
+      td:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      td:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      background-color: $base-background;
+    }
+  }
+
+  tbody {
+    height: 80vh !important;
+    overflow-y: auto;
+
+    tr {
+      td:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      td:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      &:nth-child(even) {
+        background-color: $base-background;
+      }
+
+      &:hover {
+        background-color: lighten($base-background, 10%);
+      }
+    }
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: $slider-size;
+
+  // Hide checkbox
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  // The slider
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $neutral-gray;
+    transition: .2s;
+
+    &:before {
+      position: absolute;
+      content: '';
+      height: $slider-thumb-size;
+      width: $slider-thumb-size;
+      left: 4px;
+      bottom: 4px;
+      background-color: $neutral-black;
+      transition: .2s;
+      border: 2px solid $primary-color;
+    }
+
+    &.round {
+      border-radius: $slider-size;
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  // When the checkbox is checked, move the slider thumb
+  input:checked + .slider {
+    background-color: $primary-color;
+  }
+
+  // When the checkbox is focused, add a box shadow
+  input:focus + .slider {
+    box-shadow: 0 0 1px $primary-color;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX($slider-thumb-size);
+  }
+}
+
+
+
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+  
+}
+
+// Mixins
+@mixin center-absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $modal-bg-color;
+  z-index: 2;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    
+    .title {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+
+  &-content {
+    @include center-absolute;
+    background-color: $base-background;
+    padding: $modal-content-padding;
+    max-width: $modal-content-max-width;
+    border-radius: 20px;
+    border: 2px solid $primary-color;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin: 0;
+    }
+
+    input {
+      padding: 12px;
+      color: $neutral-white;
+      border: none;
+      background: $neutral-black;
+      gap: 8px;
+      border: 2px solid $primary-color;
+      border-radius: 4px;
+      box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .close {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+}
+
+
+// mobile devices (portrait phones, less than 768px)
+@media (max-width: 767px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .toolbar-button {
+    flex-direction: column;
+  }
+
+}
