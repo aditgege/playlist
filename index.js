@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
   // Initialize the selected date to the current date
   let currentDate = new Date();
   updateSelectedDate();
